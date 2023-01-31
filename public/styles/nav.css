@@ -1,0 +1,31 @@
+nav {
+    height: 120px;
+    width: 1366px;
+    background-color: #4056A1;
+    color: #FFFFFF;
+    font-family:'Source Sans Pro', sans-serif;
+    position: fixed; 
+
+}
+
+.nav_title {
+    font-family: 'Bungee', cursive;
+    margin-left: 1.5em;
+    max-width: 200px;
+   
+}
+
+.fa-solid.fa-angles-down {
+    color: rgb(173, 13, 13);
+    width: 24px;
+    
+}
+
+#write {
+    font-family:'Source Sans Pro Semibold 600', sans-serif;
+}
+
+.new_tweet {
+    margin-right: 1.5em;
+   
+}

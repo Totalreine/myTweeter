@@ -1,0 +1,141 @@
+.negative {
+    color: red;
+}
+
+.positive {
+    color: white;
+}
+
+article:hover {
+    box-shadow: 7px 7px rgb(211, 209, 209);
+}
+
+.fa-solid.fa-flag, .fa-solid.fa-retweet, .fa-solid.fa-heart {
+    color: #4056A1 ;
+}
+
+.fa-solid.fa-flag:hover, .fa-solid.fa-retweet:hover, .fa-solid.fa-heart:hover {
+    color: rgb(184, 125, 16);
+    cursor: pointer;
+}
+
+#submit_button {
+    background-color: #4056A1;
+    font-family: 'Bungee', cursive;
+    color: white;
+    
+}
+
+output {
+    font-family: 'Bungee', cursive;
+}
+
+.article_header {
+    height: 100px;
+}
+
+#errorMsg {
+    color: rgb(187, 22, 22);
+   
+    
+}
+
+form {
+    display:flex;
+    flex-direction: column;
+    align-items: center
+}
+
+label {
+    display:flex;
+    align-self: flex-start;
+}
+
+#tweet-text {
+    width: 100%;
+    border: none;
+    outline: none;
+}
+
+.new-tweet-footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-top:3px solid grey;
+    align-items: center;
+    height: 45px;
+} 
+
+#submit_button {
+    display: flex;
+    justify-content: flex-start;
+    height: 27px;
+    font-size: medium;
+}
+
+.counter {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#tweets {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    
+}
+
+.article-tweet {
+    width: 1215px;
+    border: 1px solid black;
+    margin-bottom: 1em;
+    
+}
+
+.header-tweet {
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: space-between;
+    width: 1175px;
+    height: 40px;
+    margin-right: 20px;
+    margin-left: 20px;
+    background-color: white;
+}
+
+.content-tweet {
+    height: 60px;
+    margin-left: 20px;
+    inline-size: 200px;
+    overflow-wrap:break-word;
+    width: 1175px;
+}
+
+.footer-tweet {
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: space-between;
+    height: 30px;
+    border-top:3px solid grey;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.time-tweet {
+    margin-left: 20px;
+    font-size: small;
+}
+
+.icons-tweet {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 60px;
+    margin-right: 20px;
+    font-size: 0.5em;
+}
+
+

@@ -1,0 +1,10 @@
+#header {
+    background-image: url("../images/batthern.png");
+    background-size: cover;
+    background-color: rgb(111, 141, 143);
+    height: 525px;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+

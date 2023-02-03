@@ -5,7 +5,7 @@ const loadTweets = () => {
     type: "GET",
     url: "http://localhost:8080/tweets",
     success: function(data) {
-      console.log(data)
+      
     },
     error: function(errorMessage) {
       console.log(errorMessage)
@@ -29,7 +29,10 @@ const createTweetElement = (tweetData) => {
     const $tweet = `
     <article class="article-tweet">
         <header class="header-tweet">
-            <p> ${tweetData.user.name}  </p>
+          <div class="header-tweet-user">
+           <i class="fa-solid fa-user"></i>
+           <p> ${tweetData.user.name}  </p>
+          </div>
             <p> ${tweetData.user.handle}  </p>
         </header>
             <p class="content-tweet"> ${escape(tweetData.content.text)} </p>
@@ -55,22 +58,22 @@ const renderTweets = function(tweets) {
     $("#tweets").append(tweet);
     })
    
-  }
+}
 
-  const clearTextarea = () => {
+const clearTextarea = () => {
     $("#tweet-text").val("")
-    //console.log($("#tweet-text"))
-  }
+    
+}
 
-  const resetCounter = () => {
-    $("output").first().html("140")
-  }
+const resetCounter = () => {
+  $("output").first().html("140")
+}
   
 
- $(document).ready(function() {
+$(document).ready(function() {
     loadTweets() 
 
-    $("form").submit((event) => {
+  $("form").submit((event) => {
       event.preventDefault() 
   
       
@@ -85,47 +88,47 @@ const renderTweets = function(tweets) {
       if($("#errorMsg span").length) $("#errorMsg span").remove()
     })
 
-    if($("#tweet-text").val() !== "" && $("#tweet-text").val().length <= 140) {
+   if($("#tweet-text").val() !== "" && $("#tweet-text").val().length <= 140) {
     
-  let formData = $("#tweet-text").serialize()
-
-    $.ajax({
-      type: "POST",
-      url: "/tweets", 
-      data: formData,
-      
-      success: function(data) {
-  
-      },
-      error: function(errorMessage) {
-        console.log(errorMessage)
-      }
-    })
-    .then(() => {
+      let formData = $("#tweet-text").serialize()
 
       $.ajax({
-        type: "GET",
-        url: "http://localhost:8080/tweets",
+        type: "POST",
+        url: "/tweets", 
+        data: formData,
+        
         success: function(data) {
-          
+    
         },
         error: function(errorMessage) {
           console.log(errorMessage)
         }
       })
-      .then((data) => {
-        let newdata = data[0]
-        let tweet = createTweetElement(newdata)
-        $("#tweets").prepend(tweet);
+      .then(() => {
+
+        $.ajax({
+          type: "GET",
+          url: "http://localhost:8080/tweets",
+          success: function(data) {
+            
+          },
+          error: function(errorMessage) {
+            console.log(errorMessage)
+          }
+        })
+        .then((data) => {
+          let newdata = data[0]
+          let tweet = createTweetElement(newdata)
+          $("#tweets").prepend(tweet);
+        })
+        
+        
+        
       })
-      
-      
-      
-    })
-    
-    clearTextarea()
-    resetCounter()
-  }
+        
+      clearTextarea()
+      resetCounter()
+    }
 
   });
 

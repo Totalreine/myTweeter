@@ -4,9 +4,9 @@ $("#tweet-text").on("input",function() {
     const counter = $("output").first()
 
     let r = 140 - characters
-    
+
     counter.html(`${r}`)
-    
+
     if (r < 0) {
         $(counter).addClass("negative")
     }
@@ -14,4 +14,3 @@ $("#tweet-text").on("input",function() {
         $(counter).removeClass("negative")
     }
 }) 
-

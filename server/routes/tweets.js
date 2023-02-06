@@ -23,9 +23,12 @@ module.exports = function(DataHelpers) {
       return;
     }
 
+    
+    console.log(loadTweets())
     const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
     const tweet = {
       user: user,
+      avatars: "https://i.imgur.com/73hZDYK.png",
       content: {
         text: req.body.text
       },

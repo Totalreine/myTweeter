@@ -5,63 +5,65 @@ const loadTweets = () => {
     type: "GET",
     url: "http://localhost:8080/tweets",
     success: function(data) {
-      
+      renderTweets(data)
     },
     error: function(errorMessage) {
       console.log(errorMessage)
     }
-  })
-  .then((data) => {
-    renderTweets(data)
   })
 }
 
 
 
 const createTweetElement = (tweetData) => {
-
+  /* The escape function avoid the execution of javascript
+  code inserterd by a user in the textarea */
   const escape = function (str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
+
+  /* The format function provided by the timeago script
+  receives the created_at of the new tweet as a parameter and 
+  returns the time that has passed since the tweet was posted */
     
-    const $tweet = `
-    <article class="article-tweet">
-        <header class="header-tweet">
-          <div class="header-tweet-user">
-           <i class="fa-solid fa-user"></i>
-           <p> ${tweetData.user.name}  </p>
+  const $tweet = `
+  <article class="article-tweet">
+      <header class="header-tweet">
+        <div class="header-tweet-user">
+          <img class="avatar" src="${tweetData.user.avatars}">
+          <p> ${tweetData.user.name}  </p>
+        </div>
+          <p> ${tweetData.user.handle}  </p>
+      </header>
+          <p class="content-tweet"> ${escape(tweetData.content.text)} </p>
+      <footer class="footer-tweet">
+          <p class="time-tweet"> ${timeago.format(tweetData.created_at)} </p>
+          <div class="icons-tweet">
+          <i class="fa-solid fa-flag"></i>
+          <i class="fa-solid fa-retweet"></i>
+          <i class="fa-solid fa-heart"></i>
           </div>
-            <p> ${tweetData.user.handle}  </p>
-        </header>
-            <p class="content-tweet"> ${escape(tweetData.content.text)} </p>
-        <footer class="footer-tweet">
-            <p class="time-tweet"> ${timeago.format(tweetData.created_at)} </p>
-            <div class="icons-tweet">
-            <i class="fa-solid fa-flag"></i>
-            <i class="fa-solid fa-retweet"></i>
-            <i class="fa-solid fa-heart"></i>
-            </div>
-        </footer>
-    </article>
+      </footer>
+  </article>
    `
-   return $tweet
+  return $tweet
 }
 
 
 
 const renderTweets = function(tweets) {
     
-    tweets.map((e) => {
-    let tweet = createTweetElement(e)
-    $("#tweets").append(tweet);
-    })
+  tweets.map((e) => {
+  let tweet = createTweetElement(e)
+  $("#tweets").append(tweet);
+  })
    
 }
 
 const clearTextarea = () => {
-    $("#tweet-text").val("")
+  $("#tweet-text").val("")
     
 }
 
@@ -71,7 +73,7 @@ const resetCounter = () => {
   
 
 $(document).ready(function() {
-    loadTweets() 
+  loadTweets() 
 
   $("form").submit((event) => {
       event.preventDefault() 
@@ -96,34 +98,23 @@ $(document).ready(function() {
         type: "POST",
         url: "/tweets", 
         data: formData,
-        
         success: function(data) {
-    
+          $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/tweets",
+            success: function(data) {
+              let newdata = data[0]
+              let tweet = createTweetElement(newdata)
+              $("#tweets").prepend(tweet);
+            },
+            error: function(errorMessage) {
+              console.log(errorMessage)
+            }
+          })
         },
         error: function(errorMessage) {
           console.log(errorMessage)
         }
-      })
-      .then(() => {
-
-        $.ajax({
-          type: "GET",
-          url: "http://localhost:8080/tweets",
-          success: function(data) {
-            
-          },
-          error: function(errorMessage) {
-            console.log(errorMessage)
-          }
-        })
-        .then((data) => {
-          let newdata = data[0]
-          let tweet = createTweetElement(newdata)
-          $("#tweets").prepend(tweet);
-        })
-        
-        
-        
       })
         
       clearTextarea()

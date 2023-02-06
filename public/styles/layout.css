@@ -30,3 +30,37 @@ main {
   margin:1em auto
   
  }
+ 
+ /* Tablet Styles */
+@media only screen and (min-width: 768px) {
+ 
+
+#tablet {
+  display: flex;
+  flex-direction: row;
+  
+}
+
+#header {
+  width: 40%;
+  margin-left: 5%;
+  margin-top: 110px;
+  padding-top: 65px;
+}
+
+.container {
+  width: 40%;
+  margin-top: 100px;
+}
+
+.article-tweet {
+  width:50%;
+  
+}
+
+.content-tweet {
+  font-size: smaller;
+}
+
+  
+}

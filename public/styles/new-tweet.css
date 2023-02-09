@@ -56,6 +56,7 @@ label {
     width: 100%;
     border: none;
     outline: none;
+    overflow: hidden;
 }
 
 .new-tweet-footer {
@@ -123,12 +124,18 @@ label {
 }
 
 .content-tweet {
-    height: 60px;
+    height: 100%;
     inline-size: 200px;
     overflow-wrap:break-word;
     width: 100%;
     padding: 0px 10px 0px 10px;
-    
+    margin: 0px 0px 52px 0px;
+    font-size: 20px;
+}
+
+.header-tweet {
+    font-size: 20px;
+    margin-top: 5px;
 }
 
 .footer-tweet {
@@ -155,5 +162,7 @@ label {
     margin-right: 20px;
     font-size: 0.5em;
 }
+
+
 
 

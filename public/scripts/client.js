@@ -1,9 +1,12 @@
+/* The URL variable is for storing the url of your server*/
 
+
+let URL = "http://localhost:8080"
 
 const loadTweets = () => {
   $.ajax({
     type: "GET",
-    url: "http://localhost:8080/tweets",
+    url: `${URL}/tweets`,
     success: function(data) {
       renderTweets(data)
     },
@@ -101,7 +104,7 @@ $(document).ready(function() {
         success: function(data) {
           $.ajax({
             type: "GET",
-            url: "http://localhost:8080/tweets",
+            url: `${URL}/tweets`,
             success: function(data) {
               let newdata = data[0]
               let tweet = createTweetElement(newdata)

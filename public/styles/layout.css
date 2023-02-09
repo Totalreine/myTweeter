@@ -33,6 +33,10 @@ main {
  
  /* Tablet Styles */
 @media only screen and (min-width: 768px) {
+
+nav{
+  width: 100vm;
+}
  
 
 #tablet {
@@ -48,6 +52,10 @@ main {
   padding-top: 65px;
 }
 
+#tweet-text{
+  overflow: hidden;
+}
+
 .container {
   width: 40%;
   margin-top: 100px;
@@ -60,7 +68,50 @@ main {
 
 .content-tweet {
   font-size: smaller;
+  margin: 5px 0px 52px 0px;
+}
+  
 }
 
-  
+ /* Mobile Styles */
+@media only screen and (min-width: 320px) and (max-width: 420px) {
+
+  nav{
+    font-size: 20px;
+  }
+
+.content-tweet {
+  height: 90px;
+  font-size: 16px;
+  margin: 5px 0px 56px 0px;
+}
+
+.header-tweet {
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+
+.new_tweet_header {
+display: flex;
+align-items: center;
+flex-direction: column;
+
+}
+
+.new {
+    
+    width: 42px;
+    font-size: 15px;
+}
+
+.logo {
+    width: 80%;
+}
+
+.nav {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 }
